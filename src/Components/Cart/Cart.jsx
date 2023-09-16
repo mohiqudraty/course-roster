@@ -14,7 +14,7 @@ const Cart = ({ selectCourse, totalCredit, remainingCredit, totalPrice }) => {
       ))}
 
       <p className="py-3 my-3  border-y-2">Total Credit Hour : {totalCredit}</p>
-      <p>Total Price : {totalPrice}USD</p>
+      <p>Total Price : ${totalPrice} USD</p>
     </div>
   );
 };

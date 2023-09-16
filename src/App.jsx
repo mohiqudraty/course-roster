@@ -6,7 +6,7 @@ import Cart from "./Components/Cart/Cart";
 function App() {
   const [selectCourse, setSelectCourse] = useState([]);
   const [totalCredit, setTotalCredit] = useState(0);
-  const [remainingCredit, setRemainingCredit] = useState(0);
+  const [remainingCredit, setRemainingCredit] = useState(20);
   const [totalPrice, setTotalPrice] = useState(0);
 
   //handleSelect for getting card data
@@ -25,11 +25,15 @@ function App() {
       selectCourse.forEach((coursePrice) => {
         price += coursePrice.price;
       });
-      setRemainingCredit(remainingTotalCredit);
-      setTotalCredit(credit);
-      setTotalPrice(price);
-      const newSelectCourse = [...selectCourse, course];
-      setSelectCourse(newSelectCourse);
+      if (credit > 20) {
+        alert("you have no credit");
+      } else {
+        setRemainingCredit(remainingTotalCredit);
+        setTotalCredit(credit);
+        setTotalPrice(price);
+        const newSelectCourse = [...selectCourse, course];
+        setSelectCourse(newSelectCourse);
+      }
     }
   };
 
