@@ -7,7 +7,7 @@ import Card from "../Card/Card";
 const Cards = ({ handleSelect }) => {
   const [cardData, setCardData] = useState([]);
   useEffect(() => {
-    fetch("/public/data.json")
+    fetch("./data.json")
       .then((res) => res.json())
       .then((data) => setCardData(data));
   }, []);

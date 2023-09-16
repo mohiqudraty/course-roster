@@ -1,3 +1,9 @@
+// eslint-disable-next-line no-unused-vars
+import React from "react";
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
+
 import { useState } from "react";
 import "./App.css";
 import Cards from "./Components/Cards/Cards";
@@ -13,7 +19,9 @@ function App() {
   const handleSelect = (course) => {
     const isDuplicate = selectCourse.find((cart) => course.id == cart.id);
     if (isDuplicate) {
-      alert("data is Duplicate please select another one!");
+      // alert("toast coming");
+      toast.warn(`This course has already been selected
+      You cannot select more than one course`);
     } else {
       let credit = course.credit;
       selectCourse.forEach((cart) => {
@@ -26,7 +34,9 @@ function App() {
         price += coursePrice.price;
       });
       if (credit > 20) {
-        alert("you have no credit");
+        toast.info(
+          `You don't have enough credit. Please add credit balance then try again. Thank you`
+        );
       } else {
         setRemainingCredit(remainingTotalCredit);
         setTotalCredit(credit);
@@ -51,6 +61,7 @@ function App() {
           totalPrice={totalPrice}
         ></Cart>
       </div>
+      <ToastContainer></ToastContainer>
     </>
   );
 }
